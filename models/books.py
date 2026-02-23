@@ -3,9 +3,11 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Book:
+    """ Représente un livre dans la bibliothèque """
+    
     book_title: str
     author: str
-    available: bool = field(default=True)
+    available: bool = True
 
     def __str__(self):
         status = 'Disponible' if self.available else 'En prêt'

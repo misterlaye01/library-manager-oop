@@ -4,5 +4,7 @@ from models import Book
 
 @dataclass
 class Member:
+    """ Représente un membre de la bibliothèque """
+    
     full_name: str
-    borrowed_book: list[Book] = field(default_factory=list)
+    borrowed_books: list[Book] = field(default_factory=list)

@@ -1,11 +1,13 @@
 from services import LibraryManager
 
 
-def user_input(text):
-    user_input = input(text).strip()
-    if not user_input:
+def get_user_input(text: str):
+    """ Récupère et valide la saisie """
+    
+    get_user_input = input(text).strip()
+    if not get_user_input:
         raise ValueError('Ce champ ne peut pas être vide.')
-    return user_input
+    return get_user_input
 
 def display_menu():
     print(
@@ -24,12 +26,12 @@ def display_menu():
 def run():
     library = LibraryManager()
 
-    library.add_book('Une si longue lettre', 'Mariama BA')
+    library.add_book('Une si longue lettre', 'Mariama Ba')
     library.add_book('Vol de nuit', 'Antoine de Saint-Exupéry')
-    library.add_book("Sous l'orage", 'Seydou Bodjan')
+    library.add_book("Sous l'orage", 'Seydou Badjan')
 
-    library.register_members('Abdoulaye DIALLO')
-    library.register_members('Cheikh Saliou TALLA')
+    library.register_member('Abdoulaye DIALLO')
+    library.register_member('Cheikh Saliou TALLA')
 
 
     while True:
@@ -45,25 +47,25 @@ def run():
             match choice:
                 case '1':
                     print('\n------- AJOUTER UN LIVRE -------')
-                    title = user_input('Titre : ')
-                    author = user_input('Auteur : ')
+                    title = get_user_input('Titre : ')
+                    author = get_user_input('Auteur : ')
                     library.add_book(title, author)
                 
                 case '2':
                     print('\n------- INSCRIRE UN MEMBRE -------')
-                    full_name = user_input('Nom complet : ')
-                    library.register_members(full_name)
+                    full_name = get_user_input('Nom complet : ')
+                    library.register_member(full_name)
                 
                 case '3':
                     print('\n------- VALIDER UN PRÊT -------')
-                    member_name = user_input('Nom complet : ')
-                    book_title = user_input('Titre du livre : ')
+                    member_name = get_user_input('Nom complet : ')
+                    book_title = get_user_input('Titre du livre : ')
                     library.validate_loan(member_name, book_title)
                 
                 case '4':
                     print('\n------- ENREGISTRER UN RETOUR -------')
-                    member_name = user_input('Nom complet : ')
-                    book_title = user_input('Titre du livre : ')
+                    member_name = get_user_input('Nom complet : ')
+                    book_title = get_user_input('Titre du livre : ')
                     library.return_book(member_name, book_title)
                 
                 case '5':
